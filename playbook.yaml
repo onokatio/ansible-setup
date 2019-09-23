@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  become: false
+  tasks:
+    - name: Install package
+      homebrew:
+        name: zsh
+        state: present

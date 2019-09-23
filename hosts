@@ -1,5 +1,0 @@
-[default]
-localhost
-
-[ssh_connection]
-ssh_args = -o ForwardAgent=yes
