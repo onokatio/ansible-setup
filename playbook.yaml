@@ -3,7 +3,37 @@
   connection: local
   become: false
   tasks:
-    - name: Install package
+
+    - name: tap repository
+      homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - homebrew/cask
+        - homebrew/cask-versions
+        - homebrew/cask-fonts
+        - brewsci/science
+        - brewsci/bio
+        - homebrew-ffmpeg/ffmpeg
+        - ethereum/ethereum
+
+    - name: Update brew
       homebrew:
-        name: zsh
+        update_homebrew: yes
+
+    - name: Upgrade packages
+      homebrew:
+        upgrade_all: yes
+
+    - name: Install packages
+      homebrew:
+        name:
+         - zsh
+         - tmux
+         - curl
+         - wget
+         - coreutils
+         - findutils
+         - gnu-sed
+         - gnu-tar
         state: present
